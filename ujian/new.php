@@ -29,6 +29,7 @@ $active=$awalHalaman-1;
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
@@ -52,7 +53,7 @@ $active=$awalHalaman-1;
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
-<body class="g-sidenav-show  bg-gray-200">
+<body class="g-sidenav-show  bg-gray-200" data-bs-spy="scroll" data-bs-target="#finish">
   <!-- ===========================================================( SIDE BAR )========================================================= -->
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main" style="min-width: 24vw;">
     <div class="sidenav-header">
@@ -65,13 +66,13 @@ $active=$awalHalaman-1;
 
     <?php for ($i=1; $i <=$totalHalaman; $i++) : ?>
     <!-- ==================================================================================================================== -->
-    <button target="" class="btn bg-gradient-info mx-1 my-1 " type="button" href="#<?= $i; ?>"><?= $i; ?></button>
+    <a target="" class="btn bg-gradient-info mx-1 my-1 " type="button" href="#<?= "$i"; ?>"><?= $i; ?></a>
     <!-- ==================================================================================================================== -->
     <?php endfor; ?>
     
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">
-        <a class="btn bg-gradient-primary mt-4 w-100" href="" type="button">SIMPAN JAWABAN</a>
+        <a class="btn bg-gradient-primary mt-4 w-100" href="#finish" type="button" >SIMPAN JAWABAN</a>
       </div>
     </div>
   </aside>
@@ -86,8 +87,8 @@ $active=$awalHalaman-1;
           <!-- ===========================================================( card )========================================================= -->
           <div class="card mt-4" id="<?= $i; ?>">
             <div class="card-header p-3">
-              <h5 class="mb-0">NOMOR <?= $i; ?></h5>
-              <p class="mt-3 mb-0 text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum tenetur, fugit fugiat accusamus laudantium quo culpa, error placeat, alias cum ab. Laboriosam, officiis quisquam vitae nihil voluptas labore libero fuga.  </p>
+              <h5 class="mb-0" >NOMOR <?= $i; ?></h5>
+              <p class="mt-3 mb-0 text-lg" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum tenetur, fugit fugiat accusamus laudantium quo culpa, error placeat, alias cum ab. Laboriosam, officiis quisquam vitae nihil voluptas labore libero fuga.  </p>
             </div>
             
             
@@ -97,11 +98,10 @@ $active=$awalHalaman-1;
             <label id="a" class="card-body  pb-0">
               <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start;">
                 <span class="text-sm" style="margin: auto;">A</span>
-                <input type="radio" name="ans" id="a" class="mx-3">
+                <input  name="<?= $i; ?>" id="a" class="mx-3" type="radio">
                 <span class="text-sm" style="font-weight: 500;"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut architecto debitis, natus a ipsam officiis unde nostrum. Alias officiis, hic nobis ab in illo. Error culpa distinctio enim! Pariatur, dolores. </span>
               </div>
             </label>
-
 
             <!-- ===========================================================( pilihan )========================================================= -->
           </div>
@@ -113,7 +113,7 @@ $active=$awalHalaman-1;
               <div class="row">
 
                 <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
-                  <button class="btn bg-gradient-info w-100 mb-0 toast-btn" type="submit" onclick="confirm()">FINISH</button>
+                  <button class="btn bg-gradient-info w-100 mb-0 toast-btn" type="submit" onclick="confirm()" id="finish">FINISH</button>
                 </div>
 
                 <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
