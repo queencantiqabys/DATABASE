@@ -3,62 +3,80 @@
 
 include "../controller/controller.php";
 
-      // ======================= DEKLARASI VARIABEL ==========================
+// ======================= DEKLARASI VARIABEL ==========================
+$_GET['pil']=(isset($_GET['pil']))? $_GET['pil'] : "";;
+
+
+$soal=(isset($_GET['soal']))? $_GET['soal'] : 1;
+$pilihan=(isset($_GET['pilihan']))? $_GET['pilihan'] : "0";
+
+$totalHalaman=count(select("SELECT * FROM questions")); // varibel untuk menampilkan halaman
+$awalHalaman=(isset($_GET['soal']))? $_GET['soal'] : 1; //
+$active=$awalHalaman-1;
+
+      $hal=$active+1;
       $btn_name="";
-      $active="active bg-gradient-primary";
-      $content="";
-      // alert-primary
+      $style="active bg-gradient-primary";
+      $default_get="";
+
+
       $btn['a']="";
       $btna_name="a";
-      $btna_get="?pilihan=a";
-  
+      $get['a']="?soal=$hal&pil=a";
+
       $btn['b']="";
       $btnb_name="b";
-      $btnb_get="?pilihan=b";
+      $get['b']="?soal=$hal&pil=b";
   
       $btn['c']="";
       $btnc_name="c";
-      $btnc_get="?pilihan=c";
+      $get['c']="?soal=$hal&pil=c";
   
       $btn['d']="";
       $btnd_name="d";
-      $btnd_get="?pilihan=d";
+      $get['d']="?soal=$hal&pil=d";
   
       $btn['e']="";
       $btne_name="e";
-      $btne_get="?pilihan=e";
+      $get['e']="?soal=$hal& pil=e";
       // ===============================================================
-      $soal=(isset($_GET['soal']))? $_GET['soal'] : 1;
-      $pilihan=(isset($_GET['pilihan']))? $_GET['pilihan'] : "0";
-      
-      
       //kalau pilihan di klik maka akan membuat cookie dengan index [soal] dan value $pilihan 
-      if(isset($_COOKIE["$soal"]))
-      {
-        $btn["$pilihan"]=$active;
-      }
-      // if(isset($soal))
-      // {
-      //   if(!isset($_COOKIE["$soal"]) || $_COOKIE["$soal"]=="0")
-      //   {
-      //     $_COOKIE
-      //     $btn["$pilihan"]=$active;
-      //   }
-      //   var_dump($soal);
-      //   var_dump($_COOKIE["$soal"]);
-
-
-      //   if(isset($_COOKIE["$soal"]))
-      //   {
-      //     $_COOKIE["$soal"]=$pilihan; 
-      //     $pilihan=$_COOKIE["$soal"];
-      //     $btn["$soal"]=$active;
-      //   }
-        
-      // }
-
       // ===============================================================
-?>
+
+      $result=select("SELECT * FROM questions LIMIT $active,1");  // varibel untuk menampilkan soal dan pilihan
+      
+      $prev=(isset($_GET['soal']))? $_GET['soal']-1 : 1;  //varibel untuk mengolah data button prev
+      $prev=($prev==0)? 1 : $prev;                        //
+      
+      $next=(isset($_GET['soal']))? $_GET['soal']+1 : 1;  //variabel untuk mengolah data button next
+      $next=($next>$totalHalaman)? $totalHalaman : $next; //
+      
+      // ============================================================================================================================================= -->
+      if($_GET['pil']=='a'){
+        $btn['a']=$style;
+      }
+      
+      if($_GET['pil']=='b'){
+        $btn['b']=$style;
+      }
+
+      if($_GET['pil']=='c'){
+        $btn['c']=$style;
+        
+      }
+      
+      if($_GET['pil']=='d'){
+        $btn['d']=$style;
+      }
+      
+      if($_GET['pil']=='e'){
+        $btn['e']=$style;
+      }
+      // ============================================================================================================================================= -->
+      
+      
+      ?>              
+      <!-- // ============================================================================================================================================= -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,23 +100,15 @@ include "../controller/controller.php";
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.0.5" rel="stylesheet" />
 </head>
-
-<!-- ==================================================================================================================== -->
-<?php
-$totalHalaman=count(select("SELECT * FROM questions"));
-$awalHalaman=(isset($_GET['soal']))? $_GET['soal'] : 1;
-$active=$awalHalaman-1;
-?>
-<!-- ==================================================================================================================== -->
 <body class="g-sidenav-show  bg-gray-200">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-end ms-3 mx-5  bg-gradient-dark" style="min-width: 24vw; display:flex; align-content :flex-start; justify-content:center; " >
+
 <!-- ==================================================================================================================== -->
 <?php
 for ($i=1; $i <=$totalHalaman; $i++) :
   setcookie("$i","a");
 if($i==($active+1)) :
 ?>
-
 <!-- ==================================================================================================================== -->
 <a class="btn bg-gradient-danger mx-1 my-1 " type="button" href="?soal=<?= $i; ?>"><?= $i; ?></a>
 <!-- ==================================================================================================================== -->
@@ -123,8 +133,6 @@ endfor;
             
 <!-- ==================================================================================================================== -->
 <?php
-$result=select("SELECT * FROM questions LIMIT $active,1");
-$no=1;  
 foreach($result as $row) :
 ?>
 <!-- ==================================================================================================================== -->
@@ -132,41 +140,41 @@ foreach($result as $row) :
             <div class="card-header p-3">
               <h5 class="mb-0">SOAL <?= $row['question_num']; ?></h5>
             </div>
-            <div class="card-body p-3 pb-0">
+            <form action="nilai.php" class="card-body p-3 pb-0">
               <p class="text-lg"  >
                 <?= $row['question']; ?>
               </p>
 
 
-              <a href="?soal=<?= $active+1; ?>&pilihan=a">
+              <a href="<?= $get['a']; ?>">
                 <div class="alert card  <?= $btn['a']; ?>" >
                   <span class="text-sm">
                       A. <?= $row['a']; ?>
                   </span>
                 </div>
               </a>
-              <a href="?soal=<?= $active+1; ?>&pilihan=b">
+              <a href="<?= $get['b']; ?>">
                 <div class="alert card  <?= $btn['b']; ?>" >
                   <span class="text-sm">
                       B. <?= $row['b']; ?>
                   </span>
                 </div>
               </a>
-              <a href="?soal=<?= $active+1; ?>&pilihan=c">
+              <a href="<?= $get['c']; ?>">
                 <div class="alert card  <?= $btn['c']; ?>" >
                   <span class="text-sm">
                       C. <?= $row['c']; ?>
                   </span>
                 </div>
               </a>
-              <a href="?soal=<?= $active+1; ?>&pilihan=d">
+              <a href="<?= $get['d']; ?>">
                 <div class="alert card  <?= $btn['d']; ?>" >
                   <span class="text-sm">
                       D. <?= $row['d']; ?>
                   </span>
                 </div>
               </a>
-              <a href="?soal=<?= $active+1; ?>&pilihan=e">
+              <a href="<?= $get['e']; ?>">
                 <div class="alert card  <?= $btn['e']; ?>" >
                   <span class="text-sm">
                       E. <?= $row['e']; ?>
@@ -176,11 +184,11 @@ foreach($result as $row) :
 
 <!-- ==================================================================================================================== -->
 <?php 
-$no++;
-endforeach; ?>
+endforeach;
+?>
 <!-- ==================================================================================================================== -->
 
-            </div>
+            </form>
           </div>
           <div class="card mt-4">
             <div class="card-body p-3">
@@ -188,21 +196,11 @@ endforeach; ?>
                 <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
 
 <!-- ==================================================================================================================== -->
-<?php
-    $prev=(isset($_GET['soal']))? $_GET['soal']-1 : 1;
-    $prev=($prev==0)? 1 : $prev;
-?>
-<!-- ==================================================================================================================== -->
 <a class="btn bg-gradient-info w-100 mb-0 toast-btn" type="button" href="?soal=<?= $prev; ?>" >sebelumnya</a>
 <!-- ==================================================================================================================== -->
                   </div>
                 <div class="col-lg-3 col-sm-6 col-12  mt-lg-0 mt-2">
 
-<!-- ==================================================================================================================== -->
-<?php
-    $next=(isset($_GET['soal']))? $_GET['soal']+1 : 1;
-    $next=($next>$totalHalaman)? $totalHalaman : $next;
-?>
 <!-- ==================================================================================================================== -->
 <a class="btn bg-gradient-success w-100 mb-0 toast-btn" type="button" href="?soal=<?= $next; ?>">lanjutkan</a>
 <!-- ==================================================================================================================== -->
@@ -216,7 +214,6 @@ endforeach; ?>
 
                 </div>
               </div>
-      
               </div>
             </div>
           </div>
