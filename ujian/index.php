@@ -19,7 +19,7 @@ $active=$awalHalaman-1;
       //kalau pilihan di klik maka akan membuat cookie dengan index [soal] dan value $pilihan 
       // ===============================================================
 
-      $result=select("SELECT * FROM questions");  // varibel untuk menampilkan soal dan pilihan
+      $result=select("SELECT * FROM questions ORDER BY question_id ASC ");  // varibel untuk menampilkan soal dan pilihan
       
       
       ?>
@@ -88,7 +88,7 @@ $active=$awalHalaman-1;
           <div class="card mt-4" id="<?= $i; ?>">
             <div class="card-header p-3">
               <h5 class="mb-0" >NOMOR <?= $i; ?></h5>
-              <p class="mt-3 mb-0 text-lg" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum tenetur, fugit fugiat accusamus laudantium quo culpa, error placeat, alias cum ab. Laboriosam, officiis quisquam vitae nihil voluptas labore libero fuga.  </p>
+              <p class="mt-3 mb-0 text-lg" ><?= $row['question']; ?></p>
             </div>
             
             
@@ -99,7 +99,7 @@ $active=$awalHalaman-1;
               <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start; align-items:center">
                 <span class="text-sm">A</span>
                 <input  name="<?= $i; ?>" id="a" class="mx-3" type="radio" value="a">
-                <span class="text-sm" style="font-weight: 500;"> ciis facilis. n illo. Error culpa distinctio enim! Pariatur, dolores. </span>
+                <span class="text-sm" style="font-weight: 500;"> <?= $row['a']; ?> </span>
               </div>
             </label>
 
@@ -107,7 +107,7 @@ $active=$awalHalaman-1;
               <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start; align-items:center">
                 <span class="text-sm">B</span>
                 <input  name="<?= $i; ?>" id="b" class="mx-3" type="radio" value="b">
-                <span class="text-sm" style="font-weight: 500;"> ciis facilis. n illo. Error culpa distinctio enim! Pariatur, dolores. </span>
+                <span class="text-sm" style="font-weight: 500;"> <?= $row['b']; ?> </span>
               </div>
             </label>
 
@@ -115,7 +115,7 @@ $active=$awalHalaman-1;
               <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start; align-items:center">
                 <span class="text-sm">C</span>
                 <input  name="<?= $i; ?>" id="c" class="mx-3" type="radio" value="c">
-                <span class="text-sm" style="font-weight: 500;"> ciis facilis. n illo. Error culpa distinctio enim! Pariatur, dolores. </span>
+                <span class="text-sm" style="font-weight: 500;"> <?= $row['c']; ?> </span>
               </div>
             </label>
 
@@ -123,7 +123,7 @@ $active=$awalHalaman-1;
               <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start; align-items:center">
                 <span class="text-sm">D</span>
                 <input  name="<?= $i; ?>" id="d" class="mx-3" type="radio" value="d">
-                <span class="text-sm" style="font-weight: 500;"> ciis facilis. n illo. Error culpa distinctio enim! Pariatur, dolores. </span>
+                <span class="text-sm" style="font-weight: 500;"> <?= $row['d']; ?> </span>
               </div>
             </label>
 
@@ -131,9 +131,11 @@ $active=$awalHalaman-1;
               <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start; align-items:center">
                 <span class="text-sm">E</span>
                 <input  name="<?= $i; ?>" id="e" class="mx-3" type="radio" value="e">
-                <span class="text-sm" style="font-weight: 500;"> ciis facilis. n illo. Error culpa distinctio enim! Pariatur, dolores. </span>
+                <span class="text-sm" style="font-weight: 500;"> <?= $row['e']; ?> </span>
               </div>
             </label>
+
+            <input type="hidden" value="<?= $row['question_id']; ?>">
 
             <!-- ===========================================================( pilihan )========================================================= -->
           </div>
