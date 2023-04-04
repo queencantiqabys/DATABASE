@@ -28,14 +28,16 @@ include "../controller/controller.php";
       $btne_name="e";
       $btne_get="?pilihan=e";
       // ===============================================================
-      
-      if(isset($_GET['soal']) && isset($_GET['pilihan']))
+      $soal=(isset($_GET['soal']))? $_GET['soal'] : 1;
+      $pilihan=(isset($_GET['pilihan']))? $_GET['pilihan'] : 1;
+
+      if(isset($_GET['soal'])     )
       {
-        $soal=$_GET['soal'];
-        $pilihan=$_GET['pilihan'];
-        $btn["$pilihan"]=$active;
         setcookie($soal,$pilihan);
+        $pilihan=$_COOKIE["$soal"];
+        $btn["$pilihan"]=$active;
       }
+
       // ===============================================================
 ?>
 <!DOCTYPE html>
@@ -47,7 +49,7 @@ include "../controller/controller.php";
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <title>
-    Material Dashboard 2 by Creative Tim
+    DANA CBT
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -67,7 +69,7 @@ include "../controller/controller.php";
 $totalHalaman=count(select("SELECT * FROM questions"));
 $awalHalaman=(isset($_GET['soal']))? $_GET['soal'] : 1;
 $active=$awalHalaman-1;
-var_dump($_COOKIE);
+var_dump($_COOKIE['3']);
 ?>
 <!-- ==================================================================================================================== -->
 <body class="g-sidenav-show  bg-gray-200">
