@@ -14,83 +14,31 @@ $totalHalaman=count(select("SELECT * FROM questions")); // varibel untuk menampi
 $awalHalaman=(isset($_GET['soal']))? $_GET['soal'] : 1; //
 $active=$awalHalaman-1;
 
-      $hal=$active+1;
-      $btn_name="";
-      $style="active bg-gradient-primary";
-      $default_get="";
 
-
-      $btn['a']="";
-      $btna_name="a";
-      $get['a']="?soal=$hal&pil=a";
-
-      $btn['b']="";
-      $btnb_name="b";
-      $get['b']="?soal=$hal&pil=b";
-  
-      $btn['c']="";
-      $btnc_name="c";
-      $get['c']="?soal=$hal&pil=c";
-  
-      $btn['d']="";
-      $btnd_name="d";
-      $get['d']="?soal=$hal&pil=d";
-  
-      $btn['e']="";
-      $btne_name="e";
-      $get['e']="?soal=$hal& pil=e";
       // ===============================================================
       //kalau pilihan di klik maka akan membuat cookie dengan index [soal] dan value $pilihan 
       // ===============================================================
 
       $result=select("SELECT * FROM questions");  // varibel untuk menampilkan soal dan pilihan
       
-      $prev=(isset($_GET['soal']))? $_GET['soal']-1 : 1;  //varibel untuk mengolah data button prev
-      $prev=($prev==0)? 1 : $prev;                        //
-      
-      $next=(isset($_GET['soal']))? $_GET['soal']+1 : 1;  //variabel untuk mengolah data button next
-      $next=($next>$totalHalaman)? $totalHalaman : $next; //
-      
-      // ============================================================================================================================================= -->
-      if($_GET['pil']=='a'){
-        $btn['a']=$style;
-      }
-      
-      if($_GET['pil']=='b'){
-        $btn['b']=$style;
-      }
-
-      if($_GET['pil']=='c'){
-        $btn['c']=$style;
-        
-      }
-      
-      if($_GET['pil']=='d'){
-        $btn['d']=$style;
-      }
-      
-      if($_GET['pil']=='e'){
-        $btn['e']=$style;
-      }
-      // ============================================================================================================================================= -->
-      
       
       ?>
 <!-- // ============================================================================================================================================= -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <title>
-    DANA CBT
+    UJIAN DATABASE
   </title>
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css"
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
   <!-- Nucleo Icons -->
   <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -100,73 +48,121 @@ $active=$awalHalaman-1;
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.0.5" rel="stylesheet" />
+  <!-- Nepcha Analytics (nepcha.com) -->
+  <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
-<body class="g-sidenav-show  bg-gray-200">
-  <aside
-    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-end ms-3 mx-5  bg-gradient-dark"
-    style="min-width: 24vw; display:flex; align-content :flex-start; justify-content:center; ">
-
-    <!-- ==================================================================================================================== -->
-    <?php
-for ($i=1; $i <=$totalHalaman; $i++) :
-
-?>
-    <!-- ==================================================================================================================== -->
-    <a class="btn bg-gradient-info mx-1 my-1 " type="button" href="?soal=<?= $i; ?>"><?= $i; ?></a>
-    <!-- ==================================================================================================================== -->
-    <?php
-
-endfor;
-?>
-    <!-- ==================================================================================================================== -->
-
-  </aside>
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-
-    
-<!-- ==================================================================================================================== -->
-<?php
-foreach($result as $row) :
-?>
-<!-- ==================================================================================================================== -->
-<div class="container-fluid py-4">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <div class="card mt-4">
-
-
-        <div class="card-header p-3">
-          <h5 class="mb-0">SOAL <?= $row['question_num']; ?></h5>
-        </div>
-        <div action="nilai.php" class="card-body p-3 pb-0">
-          <p class="text-lg">
-                <?= $row['question']; ?>
-          </p>
-
-
-        <a href="<?= $get['a']; ?>">
-        <div class="alert card  <?= $btn['a']; ?>">
-          <span class="text-sm">
-                    A. <?= $row['a']; ?>
-          </span>
-        </div>
-        </a>
-
-
+<body class="g-sidenav-show  bg-gray-200" data-bs-spy="scroll" data-bs-target="#finish">
+  <!-- ===========================================================( SIDE BAR )========================================================= -->
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main" style="min-width: 24vw;">
+    <div class="sidenav-header">
+      <div class="navbar-brand m-0" style=" display:flex; align-content :flex-start; justify-content:center; " target="_blank">
+        <img src="assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
+        <span class="ms-1 font-weight-bold text-white">UJIAN DATABASE</span>
       </div>
     </div>
-  </div>
-</div>
+    <hr class="horizontal light mt-0 mb-2">
 
-<!-- ==================================================================================================================== -->
-<?php 
-endforeach;
-?>
-<!-- ==================================================================================================================== -->
+    <?php for ($i=1; $i <=$totalHalaman; $i++) : ?>
+    <!-- ==================================================================================================================== -->
+    <a target="" class="btn bg-gradient-info mx-1 my-1 " type="button" href="#<?= "$i"; ?>"><?= $i; ?></a>
+    <!-- ==================================================================================================================== -->
+    <?php endfor; ?>
+    
+    <div class="sidenav-footer position-absolute w-100 bottom-0 ">
+      <div class="mx-3">
+        <a class="btn bg-gradient-primary mt-4 w-100" href="#finish" type="button" >SIMPAN JAWABAN</a>
+      </div>
+    </div>
+  </aside>
+  <!-- ===========================================================( SIDE BAR )========================================================= -->
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <div class="container-fluid py-4">
+      <div class="row">
+      <!-- ===========================================================( FORM )========================================================= -->
+      
+      <form action="index.php" method="get" class="col-lg-8 col-md-10 mx-auto" >
+      <?php $i=1;  foreach($result as $row) :?>
+          <!-- ===========================================================( card )========================================================= -->
+          <div class="card mt-4" id="<?= $i; ?>">
+            <div class="card-header p-3">
+              <h5 class="mb-0" >NOMOR <?= $i; ?></h5>
+              <p class="mt-3 mb-0 text-lg" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum tenetur, fugit fugiat accusamus laudantium quo culpa, error placeat, alias cum ab. Laboriosam, officiis quisquam vitae nihil voluptas labore libero fuga.  </p>
+            </div>
+            
+            
+            <!-- ===========================================================( pilihan )========================================================= -->
+
+
+            <label id="a" class="card-body  pb-0">
+              <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start; align-items:center">
+                <span class="text-sm">A</span>
+                <input  name="<?= $i; ?>" id="a" class="mx-3" type="radio" value="a">
+                <span class="text-sm" style="font-weight: 500;"> ciis facilis. n illo. Error culpa distinctio enim! Pariatur, dolores. </span>
+              </div>
+            </label>
+
+            <label id="b" class="card-body  pb-0">
+              <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start; align-items:center">
+                <span class="text-sm">B</span>
+                <input  name="<?= $i; ?>" id="b" class="mx-3" type="radio" value="b">
+                <span class="text-sm" style="font-weight: 500;"> ciis facilis. n illo. Error culpa distinctio enim! Pariatur, dolores. </span>
+              </div>
+            </label>
+
+            <label id="c" class="card-body  pb-0">
+              <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start; align-items:center">
+                <span class="text-sm">C</span>
+                <input  name="<?= $i; ?>" id="c" class="mx-3" type="radio" value="c">
+                <span class="text-sm" style="font-weight: 500;"> ciis facilis. n illo. Error culpa distinctio enim! Pariatur, dolores. </span>
+              </div>
+            </label>
+
+            <label id="d" class="card-body  pb-0">
+              <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start; align-items:center">
+                <span class="text-sm">D</span>
+                <input  name="<?= $i; ?>" id="d" class="mx-3" type="radio" value="d">
+                <span class="text-sm" style="font-weight: 500;"> ciis facilis. n illo. Error culpa distinctio enim! Pariatur, dolores. </span>
+              </div>
+            </label>
+
+            <label id="e" class="card-body  pb-0">
+              <div class="btn bg-gradient-primary  w-100 mb-0 toast-btn py-3"    style="display: flex; justify-content: flex-start; align-items:center">
+                <span class="text-sm">E</span>
+                <input  name="<?= $i; ?>" id="e" class="mx-3" type="radio" value="e">
+                <span class="text-sm" style="font-weight: 500;"> ciis facilis. n illo. Error culpa distinctio enim! Pariatur, dolores. </span>
+              </div>
+            </label>
+
+            <!-- ===========================================================( pilihan )========================================================= -->
+          </div>
+          <!-- ===========================================================( card )========================================================= -->
+      <?php $i++;endforeach; ?>
+
+          <div class="card mt-4">
+            <div class="card-body p-3">
+              <div class="row">
+
+                <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
+                  <button class="btn bg-gradient-info w-100 mb-0 toast-btn" type="submit" onclick="confirm()" id="finish" name="submit">FINISH</button>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
+                  <div class="btn bg-gradient-danger  w-100 mb-0 toast-btn" >18:00 </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+        </form>
+        <!-- ===========================================================( FORM )========================================================= -->
+      </div>
+    </div>
   </main>
-
-
   <!--   Core JS Files   -->
   <script src="assets/js/core/popper.min.js"></script>
   <script src="assets/js/core/bootstrap.min.js"></script>
