@@ -8,26 +8,33 @@ include "../controller/controller.php";
       $active="active bg-gradient-primary";
       $content="";
       // alert-primary
-      $btna="";
+      $btn['a']="";
       $btna_name="a";
       $btna_get="?pilihan=a";
   
-      $btnb="";
+      $btn['b']="";
       $btnb_name="b";
       $btnb_get="?pilihan=b";
   
-      $btnc="";
+      $btn['c']="";
       $btnc_name="c";
       $btnc_get="?pilihan=c";
   
-      $btnd="";
+      $btn['d']="";
       $btnd_name="d";
       $btnd_get="?pilihan=d";
   
-      $btne="";
+      $btn['e']="";
       $btne_name="e";
       $btne_get="?pilihan=e";
       // ===============================================================
+
+      if(isset($_GET['soal']) && isset($_GET['pilihan']))
+      {
+        $soal=$_GET['soal'];
+        $pilihan=$_GET['pilihan'];
+        $btn["$pilihan"]=$active;
+      }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,36 +114,36 @@ include "../controller/controller.php";
               </p>
 
 
-              <a href="?pilihan=a">
-                <div class="alert card  <?= $btna; ?>" >
+              <a href="?soal=<?= $active+1; ?>&pilihan=a">
+                <div class="alert card  <?= $btn['a']; ?>" >
                   <span class="text-sm">
                       A. <?= $row['a']; ?>
                   </span>
                 </div>
               </a>
-              <a href="?pilihan=b">
-                <div class="alert card  <?= $btnb; ?>" >
+              <a href="?soal=<?= $active+1; ?>&pilihan=b">
+                <div class="alert card  <?= $btn['b']; ?>" >
                   <span class="text-sm">
                       B. <?= $row['b']; ?>
                   </span>
                 </div>
               </a>
-              <a href="?pilihan=c">
-                <div class="alert card  <?= $btnc; ?>" >
+              <a href="?soal=<?= $active+1; ?>&pilihan=c">
+                <div class="alert card  <?= $btn['c']; ?>" >
                   <span class="text-sm">
                       C. <?= $row['c']; ?>
                   </span>
                 </div>
               </a>
-              <a href="?pilihan=d">
-                <div class="alert card  <?= $btnd; ?>" >
+              <a href="?soal=<?= $active+1; ?>&pilihan=d">
+                <div class="alert card  <?= $btn['d']; ?>" >
                   <span class="text-sm">
                       D. <?= $row['d']; ?>
                   </span>
                 </div>
               </a>
-              <a href="?pilihan=e">
-                <div class="alert card  <?= $btne; ?>" >
+              <a href="?soal=<?= $active+1; ?>&pilihan=e">
+                <div class="alert card  <?= $btn['e']; ?>" >
                   <span class="text-sm">
                       E. <?= $row['e']; ?>
                   </span>
