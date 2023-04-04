@@ -43,7 +43,7 @@ $active=$awalHalaman-1;
       //kalau pilihan di klik maka akan membuat cookie dengan index [soal] dan value $pilihan 
       // ===============================================================
 
-      $result=select("SELECT * FROM questions LIMIT $active,1");  // varibel untuk menampilkan soal dan pilihan
+      $result=select("SELECT * FROM questions");  // varibel untuk menampilkan soal dan pilihan
       
       $prev=(isset($_GET['soal']))? $_GET['soal']-1 : 1;  //varibel untuk mengolah data button prev
       $prev=($prev==0)? 1 : $prev;                        //
@@ -75,8 +75,8 @@ $active=$awalHalaman-1;
       // ============================================================================================================================================= -->
       
       
-      ?>              
-      <!-- // ============================================================================================================================================= -->
+      ?>
+<!-- // ============================================================================================================================================= -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +89,8 @@ $active=$awalHalaman-1;
     DANA CBT
   </title>
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
   <!-- Nucleo Icons -->
   <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -100,129 +101,72 @@ $active=$awalHalaman-1;
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.0.5" rel="stylesheet" />
 </head>
-<body class="g-sidenav-show  bg-gray-200">
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-end ms-3 mx-5  bg-gradient-dark" style="min-width: 24vw; display:flex; align-content :flex-start; justify-content:center; " >
 
-<!-- ==================================================================================================================== -->
-<?php
+<body class="g-sidenav-show  bg-gray-200">
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-end ms-3 mx-5  bg-gradient-dark"
+    style="min-width: 24vw; display:flex; align-content :flex-start; justify-content:center; ">
+
+    <!-- ==================================================================================================================== -->
+    <?php
 for ($i=1; $i <=$totalHalaman; $i++) :
-  setcookie("$i","a");
-if($i==($active+1)) :
+
 ?>
-<!-- ==================================================================================================================== -->
-<a class="btn bg-gradient-danger mx-1 my-1 " type="button" href="?soal=<?= $i; ?>"><?= $i; ?></a>
-<!-- ==================================================================================================================== -->
-<?php
-else :
-?>
-<!-- ==================================================================================================================== -->
-<a class="btn bg-gradient-info mx-1 my-1 " type="button" href="?soal=<?= $i; ?>" ><?= $i; ?></a>
-<!-- ==================================================================================================================== -->
-<?php
-endif;
+    <!-- ==================================================================================================================== -->
+    <a class="btn bg-gradient-info mx-1 my-1 " type="button" href="?soal=<?= $i; ?>"><?= $i; ?></a>
+    <!-- ==================================================================================================================== -->
+    <?php
+
 endfor;
 ?>
-<!-- ==================================================================================================================== -->
+    <!-- ==================================================================================================================== -->
 
   </aside>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="card mt-4">
-            
+
+    
 <!-- ==================================================================================================================== -->
 <?php
 foreach($result as $row) :
 ?>
 <!-- ==================================================================================================================== -->
+<div class="container-fluid py-4">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="card mt-4">
 
-            <div class="card-header p-3">
-              <h5 class="mb-0">SOAL <?= $row['question_num']; ?></h5>
-            </div>
-            <form action="nilai.php" class="card-body p-3 pb-0">
-              <p class="text-lg"  >
+
+        <div class="card-header p-3">
+          <h5 class="mb-0">SOAL <?= $row['question_num']; ?></h5>
+        </div>
+        <div action="nilai.php" class="card-body p-3 pb-0">
+          <p class="text-lg">
                 <?= $row['question']; ?>
-              </p>
+          </p>
 
 
-              <a href="<?= $get['a']; ?>">
-                <div class="alert card  <?= $btn['a']; ?>" >
-                  <span class="text-sm">
-                      A. <?= $row['a']; ?>
-                  </span>
-                </div>
-              </a>
-              <a href="<?= $get['b']; ?>">
-                <div class="alert card  <?= $btn['b']; ?>" >
-                  <span class="text-sm">
-                      B. <?= $row['b']; ?>
-                  </span>
-                </div>
-              </a>
-              <a href="<?= $get['c']; ?>">
-                <div class="alert card  <?= $btn['c']; ?>" >
-                  <span class="text-sm">
-                      C. <?= $row['c']; ?>
-                  </span>
-                </div>
-              </a>
-              <a href="<?= $get['d']; ?>">
-                <div class="alert card  <?= $btn['d']; ?>" >
-                  <span class="text-sm">
-                      D. <?= $row['d']; ?>
-                  </span>
-                </div>
-              </a>
-              <a href="<?= $get['e']; ?>">
-                <div class="alert card  <?= $btn['e']; ?>" >
-                  <span class="text-sm">
-                      E. <?= $row['e']; ?>
-                  </span>
-                </div>
-              </a>
+        <a href="<?= $get['a']; ?>">
+        <div class="alert card  <?= $btn['a']; ?>">
+          <span class="text-sm">
+                    A. <?= $row['a']; ?>
+          </span>
+        </div>
+        </a>
+
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ==================================================================================================================== -->
 <?php 
 endforeach;
 ?>
 <!-- ==================================================================================================================== -->
-
-            </form>
-          </div>
-          <div class="card mt-4">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
-
-<!-- ==================================================================================================================== -->
-<a class="btn bg-gradient-info w-100 mb-0 toast-btn" type="button" href="?soal=<?= $prev; ?>" >sebelumnya</a>
-<!-- ==================================================================================================================== -->
-                  </div>
-                <div class="col-lg-3 col-sm-6 col-12  mt-lg-0 mt-2">
-
-<!-- ==================================================================================================================== -->
-<a class="btn bg-gradient-success w-100 mb-0 toast-btn" type="button" href="?soal=<?= $next; ?>">lanjutkan</a>
-<!-- ==================================================================================================================== -->
-
-                </div>
-                <div class="col-lg-3 col-sm-6 col-12 mt-lg-0 mt-2">
-
-
-                  <div class="btn bg-gradient-danger w-100 mb-0 toast-btn">11:45</div>
-
-
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </main>
 
-  
+
   <!--   Core JS Files   -->
   <script src="assets/js/core/popper.min.js"></script>
   <script src="assets/js/core/bootstrap.min.js"></script>
