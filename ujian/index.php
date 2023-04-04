@@ -29,14 +29,33 @@ include "../controller/controller.php";
       $btne_get="?pilihan=e";
       // ===============================================================
       $soal=(isset($_GET['soal']))? $_GET['soal'] : 1;
-      $pilihan=(isset($_GET['pilihan']))? $_GET['pilihan'] : 1;
-
-      if(isset($_GET['soal'])     )
+      $pilihan=(isset($_GET['pilihan']))? $_GET['pilihan'] : "0";
+      
+      
+      //kalau pilihan di klik maka akan membuat cookie dengan index [soal] dan value $pilihan 
+      if(isset($_COOKIE["$soal"]))
       {
-        setcookie($soal,$pilihan);
-        $pilihan=$_COOKIE["$soal"];
         $btn["$pilihan"]=$active;
       }
+      // if(isset($soal))
+      // {
+      //   if(!isset($_COOKIE["$soal"]) || $_COOKIE["$soal"]=="0")
+      //   {
+      //     $_COOKIE
+      //     $btn["$pilihan"]=$active;
+      //   }
+      //   var_dump($soal);
+      //   var_dump($_COOKIE["$soal"]);
+
+
+      //   if(isset($_COOKIE["$soal"]))
+      //   {
+      //     $_COOKIE["$soal"]=$pilihan; 
+      //     $pilihan=$_COOKIE["$soal"];
+      //     $btn["$soal"]=$active;
+      //   }
+        
+      // }
 
       // ===============================================================
 ?>
@@ -69,7 +88,6 @@ include "../controller/controller.php";
 $totalHalaman=count(select("SELECT * FROM questions"));
 $awalHalaman=(isset($_GET['soal']))? $_GET['soal'] : 1;
 $active=$awalHalaman-1;
-var_dump($_COOKIE['3']);
 ?>
 <!-- ==================================================================================================================== -->
 <body class="g-sidenav-show  bg-gray-200">
@@ -77,6 +95,7 @@ var_dump($_COOKIE['3']);
 <!-- ==================================================================================================================== -->
 <?php
 for ($i=1; $i <=$totalHalaman; $i++) :
+  setcookie("$i","a");
 if($i==($active+1)) :
 ?>
 
@@ -105,6 +124,7 @@ endfor;
 <!-- ==================================================================================================================== -->
 <?php
 $result=select("SELECT * FROM questions LIMIT $active,1");
+$no=1;  
 foreach($result as $row) :
 ?>
 <!-- ==================================================================================================================== -->
@@ -155,7 +175,9 @@ foreach($result as $row) :
               </a>
 
 <!-- ==================================================================================================================== -->
-<?php endforeach; ?>
+<?php 
+$no++;
+endforeach; ?>
 <!-- ==================================================================================================================== -->
 
             </div>
