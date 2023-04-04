@@ -28,13 +28,15 @@ include "../controller/controller.php";
       $btne_name="e";
       $btne_get="?pilihan=e";
       // ===============================================================
-
+      
       if(isset($_GET['soal']) && isset($_GET['pilihan']))
       {
         $soal=$_GET['soal'];
         $pilihan=$_GET['pilihan'];
         $btn["$pilihan"]=$active;
+        setcookie($soal,$pilihan);
       }
+      // ===============================================================
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,33 +64,33 @@ include "../controller/controller.php";
 
 <!-- ==================================================================================================================== -->
 <?php
-              $totalHalaman=count(select("SELECT * FROM questions"));
-              $awalHalaman=(isset($_GET['soal']))? $_GET['soal'] : 1;
-              $active=$awalHalaman-1;
-              var_dump($active);
+$totalHalaman=count(select("SELECT * FROM questions"));
+$awalHalaman=(isset($_GET['soal']))? $_GET['soal'] : 1;
+$active=$awalHalaman-1;
+var_dump($_COOKIE);
 ?>
 <!-- ==================================================================================================================== -->
 <body class="g-sidenav-show  bg-gray-200">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-end ms-3 mx-5  bg-gradient-dark" style="min-width: 24vw; display:flex; align-content :flex-start; justify-content:center; " >
 <!-- ==================================================================================================================== -->
-          <?php
-            for ($i=1; $i <=$totalHalaman; $i++) :
-              if($i==($active+1)) :
-          ?>
+<?php
+for ($i=1; $i <=$totalHalaman; $i++) :
+if($i==($active+1)) :
+?>
 
 <!-- ==================================================================================================================== -->
 <a class="btn bg-gradient-danger mx-1 my-1 " type="button" href="?soal=<?= $i; ?>"><?= $i; ?></a>
 <!-- ==================================================================================================================== -->
-          <?php
-              else :
-          ?>
+<?php
+else :
+?>
 <!-- ==================================================================================================================== -->
 <a class="btn bg-gradient-info mx-1 my-1 " type="button" href="?soal=<?= $i; ?>" ><?= $i; ?></a>
 <!-- ==================================================================================================================== -->
-          <?php
-              endif;
-            endfor;
-          ?>
+<?php
+endif;
+endfor;
+?>
 <!-- ==================================================================================================================== -->
 
   </aside>
@@ -99,10 +101,10 @@ include "../controller/controller.php";
           <div class="card mt-4">
             
 <!-- ==================================================================================================================== -->
-            <?php
-            $result=select("SELECT * FROM questions LIMIT $active,1");
-            foreach($result as $row) :
-            ?>
+<?php
+$result=select("SELECT * FROM questions LIMIT $active,1");
+foreach($result as $row) :
+?>
 <!-- ==================================================================================================================== -->
 
             <div class="card-header p-3">
@@ -151,7 +153,7 @@ include "../controller/controller.php";
               </a>
 
 <!-- ==================================================================================================================== -->
-            <?php endforeach; ?>
+<?php endforeach; ?>
 <!-- ==================================================================================================================== -->
 
             </div>
@@ -183,7 +185,11 @@ include "../controller/controller.php";
 
                 </div>
                 <div class="col-lg-3 col-sm-6 col-12 mt-lg-0 mt-2">
+
+
                   <div class="btn bg-gradient-danger w-100 mb-0 toast-btn">11:45</div>
+
+
                 </div>
               </div>
       
