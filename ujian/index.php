@@ -10,16 +10,21 @@ $_GET['pil']=(isset($_GET['pil']))? $_GET['pil'] : "";;
 $soal=(isset($_GET['soal']))? $_GET['soal'] : 1;
 $pilihan=(isset($_GET['pilihan']))? $_GET['pilihan'] : "0";
 
-$totalHalaman=count(select("SELECT * FROM questions")); // varibel untuk menampilkan halaman
+
+$eventId=$_GET['event'];
+
+
+$totalHalaman=count(select("SELECT * FROM questions where event_id =$eventId   ")); // varibel untuk menampilkan halaman
 $awalHalaman=(isset($_GET['soal']))? $_GET['soal'] : 1; //
 $active=$awalHalaman-1;
+
 
 
       // ===============================================================
       //kalau pilihan di klik maka akan membuat cookie dengan index [soal] dan value $pilihan 
       // ===============================================================
 
-      $result=select("SELECT * FROM questions ORDER BY question_id ASC ");  // varibel untuk menampilkan soal dan pilihan
+      $result=select("SELECT * FROM questions where event_id =$eventId ORDER BY question_id ASC ");  // varibel untuk menampilkan soal dan pilihan
       
       
       ?>
@@ -72,7 +77,7 @@ $active=$awalHalaman-1;
     
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">
-        <a class="btn bg-gradient-primary mt-4 w-100" href="#finish" type="button" >SIMPAN JAWABAN</a>
+        <a class="btn bg-gradient-primary mt-4 w-100" href="#finish" type="button" >SELESAIKAN </a>
       </div>
     </div>
   </aside>
@@ -151,13 +156,12 @@ $active=$awalHalaman-1;
                 </div>
 
                 <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
-                  <div class="btn bg-gradient-danger  w-100 mb-0 toast-btn" >18:00 </div>
+                  <div class="btn bg-gradient-danger  w-100 mb-0 toast-btn" > </div>
                 </div>
 
               </div>
             </div>
           </div>
-
 
 
         </form>

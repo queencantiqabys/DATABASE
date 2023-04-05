@@ -18,11 +18,13 @@ include "../controller/controller.php";
 
   $event=select("SELECT * FROM events ");/////////( DATA EVENT )
 
-  $registers=mysqli_query($conn,"SELECT event_id FROM register where register.user_id=$userId");////// ( DATA JADWAL )
+  $registers=select("SELECT event_id FROM register where register.user_id=$userId order by register_id DESC");////// ( DATA JADWAL )
   
-  $register=mysqli_fetch_assoc($registers);
-  $userEvent=$register['event_id'];
-  $jadwal=select("SELECT* FROM events where event_id =$userEvent");
+  // $register=mysqli_fetch_assoc($registers);
+  
+//  $userEvent=$register['event_id'];
+  // $jadwal=select("SELECT* FROM events where event_id = $userEvent");
+  // var_dump($jadwal);
   
 
 // ?>
@@ -215,9 +217,9 @@ include "../controller/controller.php";
 
       <ul class="navbar-nav  justify-content-end">
         <li class="nav-item d-flex align-items-center">
-          <a href="pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+          <a href="?4" class="nav-link text-body font-weight-bold px-0">
             <i class="fa fa-user me-sm-1"></i>
-            <span class="d-sm-inline d-none">Sign In</span>
+            <span class="d-sm-inline d-none"><?= $data['user_name']; ?></span>
           </a>
         </li>
         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -250,9 +252,9 @@ include "$content";
         <div class="copyright text-center text-sm text-muted text-lg-start">
           © <script>
             document.write(new Date().getFullYear())
-            </script>,
+            </script>
           made with <i class="fa fa-heart"></i> by
-          <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">WARDANA</a>
+          <a href="" class="font-weight-bold" target="_blank">QUEEN & ENJEL</a>
           for a better web.
         </div>
       </div>

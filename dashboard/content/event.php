@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="card-body">
-          <h6 class="mb-0 upper"><?= $row['event_name']; ?></h6>
+          <h6 class="mb-0 up  per"><?= $row['event_name']; ?></h6>
           <p class="text-sm upper"><?= $row['event_description']; ?></p>
           <div style="display:flex; ">
             <i class="material-icons opacity-10">computer</i>
@@ -22,7 +22,7 @@
 
           <div class="sidenav-footer ">
             <div class="">
-              <a class="btn bg-gradient-primary mt-4 w-100" href="#" type="button"><?= $row['event_id']; ?>
+              <a class="btn bg-gradient-primary mt-4 w-100" href="register/register.php?event=<?= $row['event_id']; ?>" type="button">
                 Register</a>
             </div>
           </div>

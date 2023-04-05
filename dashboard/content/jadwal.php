@@ -4,7 +4,12 @@
     <!-- row -->
 
     <?php
-      foreach($jadwal as $row) :
+
+      foreach($registers as $register) :
+        $userEvent=$register['event_id'];
+        $jadwal=select("SELECT* FROM events where event_id = $userEvent");
+        foreach($jadwal as $row) :
+
     ?>
     <div class="col-lg-4 col-md-6 mt-4 mb-4"><!-- card -->
       <div class="card z-index-2 ">
@@ -23,8 +28,8 @@
 
           <div class="sidenav-footer ">
             <div class="">
-              <a class="btn bg-gradient-primary mt-4 w-100" href="#" type="button"><?= $row['event_id']; ?>
-                Register</a>
+              <a class="btn bg-gradient-success mt-4 w-100" href="../ujian/index.php?event=<?= $row['event_id']; ?>" type="button">
+                MULAI UJIAN</a>
             </div>
           </div>
           <!-- <a class="text-sm " href="">Syarat & Ketentuan</a> -->
@@ -37,6 +42,7 @@
       </div>
     </div><!-- end card -->
     <?php
+            endforeach;
       endforeach;
     ?>
 </div>
