@@ -4,6 +4,8 @@
     header("Location: login/login.html");
     exit;
   }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +16,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <title>
-    Material Dashboard 2 by Creative Tim
+    DANA CBT
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -57,7 +59,7 @@
 
     $btn5="";
     $btn5_name="Logout";
-    $btn5_get="login/login.html";
+    $btn5_get="content/logout.php";
 
     $btn6="";
     $btn6_name="Sign Up ";

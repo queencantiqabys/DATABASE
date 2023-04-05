@@ -5,9 +5,13 @@ include "../../controller/controller.php";
 
 session_start();
 
+
+
 //root redirect
 $iftrue="../index.php";
 $iffalse="../login/login.html";
+
+if(isset( $_SESSION['login'])){header("Location: ../index.php");}
 
 
 if(isset($_POST['submit']))
@@ -31,7 +35,7 @@ if(mysqli_num_rows($data)===1) //cek apakah data ada atau tidak fungsi ini akan 
     $row = mysqli_fetch_assoc($data);
     if(password_verify($password,$row['user_password']))//cek apakah password yang diinput sama dengan password yang di database
 {
-    setcookie('id',$row['user_id'], time()+60);
+    
     $_SESSION['login']=true; //deklarasi login session
     header("Location: ../index.php?");
     exit;
