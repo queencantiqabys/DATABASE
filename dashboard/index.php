@@ -74,6 +74,10 @@ include "../controller/controller.php";
     $btn2_name="Jadwal";
     $btn2_get="?2";
 
+    $btn3="";
+    $btn3_name="Result";
+    $btn3_get="?3";
+    
     $btn4="";
     $btn4_name="Login";
     $btn4_get="?4";
@@ -92,6 +96,7 @@ include "../controller/controller.php";
     $btn_name=$btn1_name;
     $btn_get=$btn1_get;
     $content="content/event.php";
+    // $content="content/result.php";
   }
   if(isset($_GET['2'])){
     $btn2=$active;
@@ -103,7 +108,7 @@ include "../controller/controller.php";
     $btn3=$active;
     $btn_name=$btn3_name;
     $btn_get=$btn3_get;
-    $content="content/daftar.php";
+    $content="content/result.php";
   }
   if(isset($_GET['4'])){
     $btn4=$active;
@@ -146,6 +151,15 @@ include "../controller/controller.php";
               <i class="material-icons opacity-10">dashboard</i>
             </div>
             <span class="nav-link-text ms-1"><?= $btn1_name; ?></span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white  <?= $btn3; ?>" href="<?= $btn3_get; ?>">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">table_view</i>
+            </div>
+            <span class="nav-link-text ms-1"><?= $btn3_name; ?></span>
           </a>
         </li>
 
