@@ -11,8 +11,9 @@ include "../controller/controller.php";
   // +=======================(deklarasi variabel)===========================+
   $input=$_SESSION['user'];
   var_dump($input);
-  $user=mysqli_query($conn,"select* from users where user_id= '$input' or user_email= '$input'");
-//   var_dump($data);
+  $user=mysqli_query($conn,"select* from users where user_id= '$input' or user_email= '$input'");////////( DATA USER )
+
+  $event=select("SELECT * FROM events");
 // ?>
 <!DOCTYPE html>
 <html lang="en">
