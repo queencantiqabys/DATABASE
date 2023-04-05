@@ -87,7 +87,7 @@ $active=$awalHalaman-1;
       <div class="row">
       <!-- ===========================================================( FORM )========================================================= -->
       
-      <form action="nilai.php" method="post" class="col-lg-8 col-md-10 mx-auto" >
+      <form action="nilai.php?event=<?= $eventId; ?>" method="post" class="col-lg-8 col-md-10 mx-auto" >
       <?php $i=1;  foreach($result as $row) :?>
           <!-- ===========================================================( card )========================================================= -->
           <div class="card mt-4" id="<?= $i; ?>">
