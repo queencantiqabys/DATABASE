@@ -1,8 +1,8 @@
 <?php
 
 
+session_start();
 include "../controller/controller.php";
-
 // ======================= DEKLARASI VARIABEL ==========================
 $_GET['pil']=(isset($_GET['pil']))? $_GET['pil'] : "";;
 
@@ -10,15 +10,21 @@ $_GET['pil']=(isset($_GET['pil']))? $_GET['pil'] : "";;
 $soal=(isset($_GET['soal']))? $_GET['soal'] : 1;
 $pilihan=(isset($_GET['pilihan']))? $_GET['pilihan'] : "0";
 
-
+$userId=$_SESSION['user'];
+// var_dump($userId);
 $eventId=$_GET['event'];
+
+$attemp=mysqli_query($conn,"SELECT * FROM result where user_id =$userId AND event_id=$eventId ");
+
+if(mysqli_num_rows($attemp)>0)
+{
+  header("Location: ../dashboard/index.php?3");
+}
 
 
 $totalHalaman=count(select("SELECT * FROM questions where event_id =$eventId   ")); // varibel untuk menampilkan halaman
 $awalHalaman=(isset($_GET['soal']))? $_GET['soal'] : 1; //
 $active=$awalHalaman-1;
-
-
 
       // ===============================================================
       //kalau pilihan di klik maka akan membuat cookie dengan index [soal] dan value $pilihan 
