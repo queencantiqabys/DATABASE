@@ -12,8 +12,19 @@ include "../controller/controller.php";
   $input=$_SESSION['user'];
   var_dump($input);
   $user=mysqli_query($conn,"select* from users where user_id= '$input' or user_email= '$input'");////////( DATA USER )
+  $data=mysqli_fetch_assoc($user);
+  $userId=$data['user_id'];
 
-  $event=select("SELECT * FROM events ");
+
+  $event=select("SELECT * FROM events ");/////////( DATA EVENT )
+
+  $registers=mysqli_query($conn,"SELECT event_id FROM register where register.user_id=$userId");////// ( DATA JADWAL )
+  
+  $register=mysqli_fetch_assoc($registers);
+  $userEvent=$register['event_id'];
+  $jadwal=select("SELECT* FROM events where event_id =$userEvent");
+  
+
 // ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,8 +1,3 @@
-<?php
-$row=mysqli_fetch_assoc($user);  
-// var_dump($user);
-
-?>
 
 <div class="container-fluid px-2 px-md-4">
       <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
@@ -18,7 +13,7 @@ $row=mysqli_fetch_assoc($user);
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1 upper">
-                <?= $row['user_name']; ?>
+                <?= $data['user_name']; ?>
               </h5>
               <p class="mb-0 font-weight-normal text-sm">
                 
@@ -39,19 +34,19 @@ $row=mysqli_fetch_assoc($user);
 
                   <li class="list-group-item border-0 px-0"></li>
                       <div class="form-check form-switch ps-0">
-                        <label class="form-text-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">Nama : <?= $row['user_name']; ?></label>
+                        <label class="form-text-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">Nama : <?= $data['user_name']; ?></label>
                       </div>
                     </li>
 
                     <li class="list-group-item border-0 px-0">
                       <div class="form-check form-switch ps-0">
-                        <label class="form-text-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">Email : <?= $row['user_email']; ?></label>
+                        <label class="form-text-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">Email : <?= $data['user_email']; ?></label>
                       </div>
                     </li>
 
                     <li class="list-group-item border-0 px-0">
                       <div class="form-check form-switch ps-0">
-                        <label class="form-text-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">Contac : <?= $row['user_num']; ?></label>
+                        <label class="form-text-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">Contac : <?= $data['user_num']; ?></label>
                      </div>
                     </li>
 
@@ -63,7 +58,7 @@ $row=mysqli_fetch_assoc($user);
 
                     <li class="list-group-item border-0 px-0">
                       <div class="form-check form-switch ps-0">
-                        <label class="form-text-label text-body ms-3 text-truncate w-80 mb-0 upper" for="flexSwitchCheckDefault3">Sekolah :  <?= $row['user_school']; ?></label>
+                        <label class="form-text-label text-body ms-3 text-truncate w-80 mb-0 upper" for="flexSwitchCheckDefault3">Sekolah :  <?= $data['user_school']; ?></label>
                       </div>
                     </li>
                     

@@ -13,8 +13,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h6 class="mb-0 "><?= $row['event_name']; ?></h6>
-          <p class="text-sm capt"><?= $row['event_description']; ?></p>
+          <h6 class="mb-0 upper"><?= $row['event_name']; ?></h6>
+          <p class="text-sm upper"><?= $row['event_description']; ?></p>
           <div style="display:flex; ">
             <i class="material-icons opacity-10">computer</i>
             <p class="mb-0 text-sm " style="margin-left:10px;"><?= $row['event_date']; ?></p>
