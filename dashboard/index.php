@@ -13,7 +13,7 @@ include "../controller/controller.php";
   var_dump($input);
   $user=mysqli_query($conn,"select* from users where user_id= '$input' or user_email= '$input'");////////( DATA USER )
 
-  $event=select("SELECT * FROM events");
+  $event=select("SELECT * FROM events ");
 // ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@ include "../controller/controller.php";
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  <style>.tengah{display: flex; justify-content: center;} .upper{text-transform: uppercase; } </style>
+  <style>.tengah{display: flex; justify-content: center;} .upper{text-transform: uppercase; } .capt{text-transform: capitalize; }</style>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
