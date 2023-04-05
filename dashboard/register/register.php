@@ -4,8 +4,14 @@ include "../../controller/controller.php";
 
 
 $userId=$_SESSION['user'];
-$eventID=$_GET['event'];
-    sql("INSERT INTO register (register_date,user_id,event_id) VALUES (NOW(),$userId,$eventID)");
-    header("Location: ../index.php?register");
+$eventId=$_GET['event'];
+
+$attemp=mysqli_query($conn,"SELECT * FROM register where user_id =$userId AND event_id=$eventId ");
+if(mysqli_num_rows($attemp)>0)// cek apakah telah ada di table result atau belum
+{
+  header("Location: ../index.php?2");
+}
+sql("INSERT INTO register (register_date,user_id,event_id) VALUES (NOW(),$userId,$eventId)");
+header("Location: ../index.php?register");
 
 ?>

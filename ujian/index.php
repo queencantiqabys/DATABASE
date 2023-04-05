@@ -15,8 +15,7 @@ $userId=$_SESSION['user'];
 $eventId=$_GET['event'];
 
 $attemp=mysqli_query($conn,"SELECT * FROM result where user_id =$userId AND event_id=$eventId ");
-
-if(mysqli_num_rows($attemp)>0)
+if(mysqli_num_rows($attemp)>0)// cek apakah telah ada di table result atau belum
 {
   header("Location: ../dashboard/index.php?3");
 }
@@ -25,7 +24,7 @@ if(mysqli_num_rows($attemp)>0)
 $totalHalaman=count(select("SELECT * FROM questions where event_id =$eventId   ")); // varibel untuk menampilkan halaman
 $awalHalaman=(isset($_GET['soal']))? $_GET['soal'] : 1; //
 $active=$awalHalaman-1;
-
+          
       // ===============================================================
       //kalau pilihan di klik maka akan membuat cookie dengan index [soal] dan value $pilihan 
       // ===============================================================
