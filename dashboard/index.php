@@ -1,12 +1,19 @@
 <?php
+
+include "../controller/controller.php";
+
   session_start();
   if(!isset($_SESSION['login'])){
     header("Location: login/login.html");
     exit;
   }
 
-
-?>
+  // +=======================(deklarasi variabel)===========================+
+  $input=$_SESSION['user'];
+  var_dump($input);
+  $user=mysqli_query($conn,"select* from users where user_id= '$input' or user_email= '$input'");
+//   var_dump($data);
+// ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +39,7 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  <style>.tengah{display: flex; justify-content: center;} </style>
+  <style>.tengah{display: flex; justify-content: center;} .upper{text-transform: uppercase; } </style>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -217,6 +224,9 @@
   <div class="container-fluid py-4">
 <!-- ======================================================================================================================================== -->
 <?php
+// var_dump($input);
+// $data=query("select* from users where user_id= '$input' or user_email= '$user_email'");
+// var_dump($data);
 include "$content";
 ?>
 <!-- ======================================================================================================================================== -->
