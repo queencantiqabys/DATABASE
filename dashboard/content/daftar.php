@@ -2,6 +2,8 @@
     $eventId=$_GET['event'];
     $userId=$_SESSION['user'];
 
+
+
     $users=mysqli_query($conn,"select * from users where user_id=$userId");
     $user=mysqli_fetch_assoc($users);
     
@@ -35,7 +37,7 @@
               <div class="card-body">
 
 
-                <form role="form" class="text-start" action="register/register.php" method="post">
+                <form role="form" class="text-start" action="register/register.php" method="post" enctype="multipart/form-data">
 
 
                     <label class="form-label upper">NAMA :   <?= $user['user_name']; ?></label><br>
@@ -61,7 +63,7 @@
 
                     <div class="mb-3">
                         <label for="formFileSm" class="form-label">UPLOAD SYARAT</label>
-                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="register_req" required>
+                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="foto" required>
                     </div>
                     <!-- ====================================================( DATA YANG AKAN DIKIRIMKAN )============================================================== -->
 
