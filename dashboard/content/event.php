@@ -9,7 +9,7 @@
       <div class="card z-index-2 ">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
           <div class="tengah">
-            <img class="shadow-primary border-radius-lg" src="#" alt="" height="160">
+            <img class="shadow-primary border-radius-lg" src="../directory/events/<?= $row['event_img']; ?>" alt="" height="160">
           </div>
         </div>
         <div class="card-body">
