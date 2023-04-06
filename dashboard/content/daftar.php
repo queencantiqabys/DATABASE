@@ -55,15 +55,15 @@
                     <label class="form-label upper ">selesai : <?= $event['end_time']; ?></label><br>
                     <hr class="horizontal light mt-0 mb-2">
 
-<!-- ====================================================( DATA YANG AKAN DIKIRIMKAN )============================================================== -->
-<input type="hidden" name="event_id" value="<?= $eventId; ?>">
-<input type="hidden" name="user_id" value="<?= $userId; ?>">
+                    <!-- ====================================================( DATA YANG AKAN DIKIRIMKAN )============================================================== -->
+                    <input type="hidden" name="event_id" value="<?= $eventId; ?>">
+                    <input type="hidden" name="user_id" value="<?= $userId; ?>">
 
-<div class="mb-3">
-    <label for="formFileSm" class="form-label">UPLOAD SYARAT</label>
-    <input class="form-control form-control-sm" id="formFileSm" type="file" name="register_req" >
-</div>
-<!-- ====================================================( DATA YANG AKAN DIKIRIMKAN )============================================================== -->
+                    <div class="mb-3">
+                        <label for="formFileSm" class="form-label">UPLOAD SYARAT</label>
+                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="register_req" >
+                    </div>
+                    <!-- ====================================================( DATA YANG AKAN DIKIRIMKAN )============================================================== -->
 
 
                   <div class="text-center">
