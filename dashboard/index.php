@@ -18,7 +18,10 @@ include "../controller/controller.php";
 
   $event=select("SELECT * FROM events ");/////////( DATA EVENT )
 
-  $registers=select("SELECT event_id FROM register where register.user_id=$userId and register_acc = 1 order by register_id DESC");////// ( DATA JADWAL )
+  $registers=select("SELECT event_id FROM register where register.user_id=$userId and register_acc=1 order by register_id DESC");////// ( DATA JADWAL )
+  
+
+  $pending=select("SELECT event_id FROM register where register.user_id=$userId and register_acc=0 order by register_id DESC");////// ( DATA JADWAL )
   
   // $register=mysqli_fetch_assoc($registers);
   
