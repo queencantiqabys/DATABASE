@@ -28,7 +28,7 @@
 
           <div class="sidenav-footer ">
             <div class="">
-              <a class="btn bg-gradient-success mt-4 w-100" href="../ujian/index.php?event=<?= $row['event_id']; ?>" type="button">
+              <a class="btn bg-gradient-success mt-4 w-100" href="../ujian/val.php?event=<?= $row['event_id']; ?>" type="button">
                 MULAI UJIAN</a>
             </div>
           </div>

@@ -13,7 +13,7 @@ if(mysqli_num_rows($attemp)>0)// cek apakah telah ada di table result atau belum
 echo "<script> alert('ANDA TELAH MENDAFTAR SILAHKAN TUNGGU AGAR DI ACC') </script>";
 exit;
 }
-sql("INSERT INTO register (register_date,user_id,event_id) VALUES (NOW(),$userId,$eventId)");
+sql("INSERT INTO register (register_acc,register_date,user_id,event_id) VALUES (0,NOW(),$userId,$eventId)");
 header("Location: ../index.php?register");
 
 ?>
