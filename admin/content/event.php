@@ -97,7 +97,7 @@
                           <div>
                           </div>
                           <div class="my-auto">
-                            <a href="action/event.php?event=<?= $event['event_id']; ?>"><i class='fas fa-pen px-1' style=''></i></a>
+                            <a href="action/edit_event.php?event=<?= $event['event_id']; ?>"><i class='fas fa-pen px-1' style=''></i></a>
                             <a href=""><i class="fa fa-trash-o px-1"></i></a>
                           </div>
                         </div>
@@ -122,7 +122,7 @@
       </div>
       <div class="sidenav-footer ">
         <div class="">
-          <a class="btn bg-gradient-info mt-4 w-100" href="" type="button">
+          <a class="btn bg-gradient-info mt-4 w-100" href="action/add_event.php" type="button">
                 tambahkan </a>
         </div>
       </div>

@@ -16,19 +16,19 @@ include "../../controller/controller.php";
   $userId=$data['user_id'];
 
 
-  // $event=select("SELECT * FROM events ");/////////( DATA EVENT )
+// $event=select("SELECT * FROM events ");/////////( DATA EVENT )
 
-  // $registers=select("SELECT event_id FROM register where register.user_id=$userId and register_acc=1 order by register_id DESC");////// ( DATA JADWAL )
-  
+// $registers=select("SELECT event_id FROM register where register.user_id=$userId and register_acc=1 order by register_id DESC");////// ( DATA JADWAL )
 
-  // $pending=select("SELECT event_id FROM register where register.user_id=$userId and register_acc=0 order by register_id DESC");////// ( DATA JADWAL )
-  
-  // // $register=mysqli_fetch_assoc($registers);
-  
+
+// $pending=select("SELECT event_id FROM register where register.user_id=$userId and register_acc=0 order by register_id DESC");////// ( DATA JADWAL )
+
+// $register=mysqli_fetch_assoc($registers);
+
 //  $userEvent=$register['event_id'];
-  // $jadwal=select("SELECT* FROM events where event_id = $userEvent");
-  // var_dump($jadwal);
-  
+// $jadwal=select("SELECT* FROM events where event_id = $userEvent");
+// var_dump($jadwal);
+
 
 // ?>
 <!DOCTYPE html>
@@ -137,14 +137,8 @@ include "../../controller/controller.php";
 <!-- ======================================================================================================================================== -->
 <div class="row mt-4">
     <!-- row -->
-    <?php
-    $eventId=$_GET['event'];
-    $event=select("select*from events where event_id=$eventId");
-    
-      foreach($event as $row) :
-    ?>
-    <h4>EDIT EVENTS <?= $row['event_name']; ?></h4>
-    <form class="" action="edit_event.php" method="post" enctype="multipart/form-data"><!-- card -->
+    <h4>ADD EVENTS </h4>
+    <form class="" action="add_.php" method="post" enctype="multipart/form-data"><!-- card -->
       <div class="card z-index-2 ">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
             <input type="file" class="btn bg-gradient-primary mt-4 w-100 py-5" name="foto" type="button">
@@ -152,30 +146,31 @@ include "../../controller/controller.php";
 
         </div>
         <div class="card-body">
+
             <!-- title -->
-            <input class="mb-0 up  per" type="text" value="<?= $row['event_name']; ?>" name="event_name"><br><br>
+            <input class="mb-0 up  per" type="text" value="" name="event_name"><br><br>
             
             <!-- title -->
-            <input class="text-sm upper" type="text" value="<?= $row['event_description']; ?>" name="event_description"><br><br>
+            <input class="text-sm upper" type="text" value="" name="event_description"><br><br>
             
             
             <!-- juknis -->
             <div style="display:flex; ">
                 <i class="material-icons opacity-10">computer</i>
-                <input type="date" class="mb-0 text-sm " style="margin-left:10px;" value="<?= $row['event_date'];?>" name="event_date"><br>
+                <input type="date" class="mb-0 text-sm " style="margin-left:10px;" value="" name="event_date"><br>
             </div><br>
             
             <!-- start - end -->
             <hr class="dark horizontal">
             <label for="start">start time</label>
-            <input class="mb-0 text-sm" type="time" value="<?= $row['waktu_mulai']; ?>" id='start' name="waktu_mulai"><br>
+            <input class="mb-0 text-sm" type="time" value="" id='start' name="waktu_mulai"><br>
             
             
             <label for="end">end time</label>
-            <input class="mb-0 text-sm" type="time" value="<?= $row['waktu_selesai']; ?>" id='end' name="waktu_selesai"><br>
+            <input class="mb-0 text-sm" type="time" value="" id='end' name="waktu_selesai"><br>
             
             <!-- hidden -->
-            <input type="hidden" name="event_id" value="<?= $row['event_id']; ?>">
+            <input type="hidden" name="event_id" value="">
               
               
             
@@ -200,9 +195,7 @@ include "../../controller/controller.php";
         </div>
       </div>
       </form><!-- end card -->
-    <?php
-      endforeach;
-    ?>
+
   
 <!-- ======================================================================================================================================== -->
 </div>
