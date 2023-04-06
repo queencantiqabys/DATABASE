@@ -61,7 +61,7 @@
 
                     <div class="mb-3">
                         <label for="formFileSm" class="form-label">UPLOAD SYARAT</label>
-                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="register_req" >
+                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="register_req" required>
                     </div>
                     <!-- ====================================================( DATA YANG AKAN DIKIRIMKAN )============================================================== -->
 

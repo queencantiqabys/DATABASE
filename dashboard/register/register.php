@@ -20,7 +20,7 @@ document.location.href='../index.php';
 ";
 exit;
 }
-sql("INSERT INTO register (register_acc,register_date,user_id,event_id,event_req) VALUES (0,NOW(),$userId,$eventId,$req)");
+sql("INSERT INTO register (register_acc,register_date,user_id,event_id,register_req) VALUES (0,NOW(),$userId,$eventId,$req)");
 header("Location: ../index.php?register");
 
 ?>
