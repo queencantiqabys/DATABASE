@@ -50,11 +50,17 @@ function query($syntax){
     return $data;
 }
 // ---------------------------------------------------------------
-function delete($table,$pk){
-    sql("DELETE FROM $table WHERE $pk");
+function delete($data){
+    global $conn;
+    $query="DELETE FROM events WHERE (event_id = $data)";
+    mysqli_query($conn,$query);
+    return mysqli_affected_rows($conn);
 }
+
 function update($table,$edit,$pk){
-    sql("UPDATE $table SET $edit WHERE $pk");
+    global $conn;
+    mysqlli_query($conn,"UPDATE $table SET $edit WHERE $pk");
+    return mysqli_affected_rows($conn);
 }
 
 function upload($directory){

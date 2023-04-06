@@ -97,8 +97,11 @@
                           <div>
                           </div>
                           <div class="my-auto">
+                            <!-- edit data -->
                             <a href="action/edit_event.php?event=<?= $event['event_id']; ?>"><i class='fas fa-pen px-1' style=''></i></a>
-                            <a href=""><i class="fa fa-trash-o px-1"></i></a>
+
+                            <!-- hapus data -->
+                            <a href="action/delete_event.php?event=<?= $event['event_id']; ?>" onclick="confirmDelete()"><i class="fa fa-trash-o px-1"></i></a>
                           </div>
                         </div>
                       </td>
