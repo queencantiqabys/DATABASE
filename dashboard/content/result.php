@@ -20,7 +20,8 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Event Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Grade</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Score</th>
-                      <th></th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Sekolah</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
@@ -41,12 +42,12 @@
                           <div>
                           </div>
                           <div class="my-auto">
-                            <h6 class="mb-0 text-sm"><?= $data['user_name']; ?></h6>
+                            <h6 class="mb-0 text-sm upper"><?= $data['user_name']; ?></h6>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="text-sm font-weight-bold mb-0"><?= $event['event_name']; ?></p>
+                        <p class="text-sm font-weight-bold mb-0 upper"><?= $event['event_name']; ?></p>
                       </td>
                       <td>
                         <span class="text-xs font-weight-bold"><?= $row['grade']; ?></span>
@@ -61,11 +62,16 @@
                           </div>
                         </div>
                       </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
+                      <td>
+                        <div class="d-flex px-2">
+                          <div>
+                          </div>
+                          <div class="my-auto">
+                            <h6 class="mb-0 text-sm upper"><?= $data['user_school']; ?></h6>
+                          </div>
+                        </div>
                       </td>
+      
                     </tr>
                     <?php
                         endforeach;
