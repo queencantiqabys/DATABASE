@@ -43,7 +43,7 @@
           <hr class="dark horizontal">
           <div class="d-flex ">
             <i class="material-icons text-sm my-auto me-1">schedule</i>
-            <p class="mb-0 text-sm"><?= $row['event_registerdate']; ?> </p>
+            <p class="mb-0 text-sm"><?= $row['waktu_mulai']; ?> - <?= $row['waktu_selesai']; ?></p>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
           <hr class="dark horizontal">
           <div class="d-flex ">
             <i class="material-icons text-sm my-auto me-1">schedule</i>
-            <p class="mb-0 text-sm"><?= $row['event_registerdate']; ?> </p>
+            <p class="mb-0 text-sm"><?= $row['waktu_mulai']; ?> - <?= $row['waktu_selesai']; ?></p>
           </div>
         </div>
       </div>
