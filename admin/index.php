@@ -74,7 +74,7 @@ include "../controller/controller.php";
     $btn1_get="?1";
 
     $btn2="";
-    $btn2_name="Jadwal";
+    $btn2_name="Questions ";
     $btn2_get="?2";
 
     $btn3="";
@@ -105,7 +105,7 @@ include "../controller/controller.php";
     $btn2=$active;
     $btn_name=$btn2_name;
     $btn_get=$btn2_get;
-    $content="content/jadwal.php";
+    $content="content/questions.php";
   }
   if(isset($_GET['3'])){
     $btn3=$active;
