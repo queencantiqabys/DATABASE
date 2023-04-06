@@ -71,19 +71,19 @@ function upload($directory){
     }
 
     //memastikan yang diupload adalah gambar
-    $sayamauekstensi =['jpg','png','jpeg','jfif'];
+    $sayamauekstensi =['jpg','JPG','png','PNG','jpeg','JPEG','jfif','JFIF','SVG','svg'];
     $ekstensiGambar = explode('.',$namaFoto); //ambil var nama foto kalau ketemu titik maka pecah sebagai array 
     $ekstensiGambar = strtolower(end($ekstensiGambar));
-    //end artinya mengambil array yang paling akhir.
-    //strtolower artinya mengubah semua data menjadi lowercase.
+    // end artinya mengambil array yang paling akhir.
+    // strtolower artinya mengubah semua data menjadi lowercase.
     
     //cek apakah ekstensi gambar yang diupload sesuai dengan yang saya mau.
-    // if(!in_array($ekstensiGambar,$sayamauekstensi)){ //fungsi in_array (A,B)berfungsi untuk mencari A di dalam B
-    //     echo"
-    //     <script>alert('yang anda upload bukan gambar')</script>
-    //     ";
-    //     return false;
-    // }
+    if(!in_array($ekstensiGambar,$sayamauekstensi)){ //fungsi in_array (A,B)berfungsi untuk mencari A di dalam B
+        echo"
+        <script>alert('yang anda upload bukan gambar')</script>
+        ";
+        return false;
+    }
 
     //cek ukuran file sesuai dengan yang saya bataskan
     if($ukuranFoto>1000000){
