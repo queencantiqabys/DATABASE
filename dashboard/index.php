@@ -90,8 +90,8 @@ include "../controller/controller.php";
     $btn5_get="content/logout.php";
 
     $btn6="";
-    $btn6_name="Sign Up ";
-    $btn6_get="login/signup.html";
+    $btn6_name="Daftar";
+    $btn6_get="?6";
 
       // MEMPROSES AGAR MENGAKTIVKAN BUTTON ONCLICK
   if(isset($_GET['1'])){
@@ -125,11 +125,11 @@ include "../controller/controller.php";
     $btn_get=$btn5_get;
     $content="content/logout.php";
   }
-  if(isset($_GET['6'])){
+  if(isset($_GET['event'])){
     $btn6=$active;
     $btn_name=$btn6_name;
     $btn_get=$btn6_get;
-    $content="login/signup.html";
+    $content="content/daftar.php";
   }
   ?>
 
@@ -203,14 +203,14 @@ include "../controller/controller.php";
         </li>
 
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link text-white <?= $btn6; ?>" href="<?= $btn6_get; ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
             <span class="nav-link-text ms-1"><?= $btn6_name; ?></span>
           </a>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">

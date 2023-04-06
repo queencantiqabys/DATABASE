@@ -22,7 +22,7 @@
 
           <div class="sidenav-footer ">
             <div class="">
-              <a class="btn bg-gradient-primary mt-4 w-100" href="register/register.php?event=<?= $row['event_id']; ?>" type="button">
+              <a class="btn bg-gradient-primary mt-4 w-100" href="?event=<?= $row['event_id']; ?>" type="button">
                 Register</a>
             </div>
           </div>
@@ -40,4 +40,3 @@
     ?>
   
 </div>
-
