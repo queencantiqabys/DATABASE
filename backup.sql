@@ -58,8 +58,13 @@ CREATE TABLE result (
 result_id INT AUTO_INCREMENT PRIMARY KEY,
 score DECIMAL(5,2),
 grade CHAR(1),
+result_date DATE NOT NULL,
+result_time TIME NOT NULL,
 user_id INT,
 event_id INT,
 FOREIGN KEY (user_id) REFERENCES users(user_id),
 FOREIGN KEY (event_id) REFERENCES events(event_id)
 );
+alter table result add column
+result_date DATE NOT NULL,
+result_time TIME NOT NULL after grade;
