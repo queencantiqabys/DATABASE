@@ -42,6 +42,8 @@ $iffalse="../login/signup.html";
             ";
             return 0;
         }
+        if($email='admin@admin.com'){        sql("INSERT INTO admin (admin_name,admin_num,admin_email,admin_password) VALUES ('$name','$number','$email','$password')");
+        }
         sql("INSERT INTO users (user_name,user_num,user_email,user_password,user_school) VALUES ('$name','$number','$email','$password','$school')");
         echo"
         <script>

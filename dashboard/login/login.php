@@ -43,9 +43,10 @@ if(mysqli_num_rows($user)===1) //cek apakah data ada atau tidak fungsi ini akan 
 
 
     if(mysqli_num_rows($admin)===1){ header("Location: ../../admin/index.php");}
+    else{header("Location: ../index.php?");}
     
 
-    header("Location: ../index.php?");
+    
     exit;
 exit;
 }
