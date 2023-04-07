@@ -10,7 +10,7 @@ include "../controller/controller.php";
 
   // +=======================(deklarasi variabel)===========================+
   $input=$_SESSION['user'];
-  var_dump($input);
+  // var_dump($input);
   $user=mysqli_query($conn,"select* from users where user_id= '$input' or user_email= '$input'");////////( DATA USER )
   $data=mysqli_fetch_assoc($user);
   $userId=$data['user_id'];
