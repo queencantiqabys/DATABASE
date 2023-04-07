@@ -186,7 +186,7 @@ include "../../controller/controller.php";
 
             
               <button class="btn bg-gradient-primary mt-4  mx-3 px-3" type="submit" name="submit">
-                Edit</button>
+                Tambahkan</button>
             
 
           </div>

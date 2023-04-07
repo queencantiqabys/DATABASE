@@ -33,11 +33,13 @@ CREATE TABLE register (
   register_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   register_acc BOOLEAN NOT NULL,
   register_date DATE NOT NULL,
+register_req VARCHAR(255) NULL,
   user_id INT NOT NULL,
   event_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   FOREIGN KEY (event_id) REFERENCES events(event_id)
 );
+-- alter table register add column register_req varchar(255) after register_date;
 
 CREATE TABLE questions (
 question_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
