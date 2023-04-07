@@ -6,5 +6,5 @@ include "../../controller/controller.php";
     $registerId=$_POST['register_id'];
 
     sql("UPDATE register SET register_acc=1 ");
-    header("Location: ../index.php");
+    header("Location: ../index.php?6");
 ?>

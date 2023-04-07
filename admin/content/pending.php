@@ -74,7 +74,17 @@
                           </div>
                           <div class="my-auto d-flex justify-content-center">
                             <!-- <button class="rounded-3" src="../directory/users/<?= $row['register_req']; ?>" alt="persyaratan" > -->
+                            <?php
+                              if($row['register_acc']==0):
+                            ?>
                             <button width="160px"data-bs-toggle="modal" data-bs-target="#acc" class="btn btn-success">ACC</button>
+                            <?php
+                              else:
+                            ?>
+                            <button width="160px" class="btn btn-info">TERDAFTAR</button>
+                            <?php
+                              endif;
+                            ?>
 
                           </div>
                         </div>
