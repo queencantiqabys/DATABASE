@@ -25,6 +25,7 @@ $input=$_POST['input'];//mendeklarasikan input
 
 // ======================================>
 $user = mysqli_query($conn,"SELECT*FROM users WHERE user_name='$input' or user_email='$input'");
+$admin = mysqli_query($conn,"SELECT*FROM admin WHERE admin_name='$input' or admin_email='$input'");
 // ======================================>
 $password=$_POST['password'];//mendeklarasikan password
 // ======================================>
@@ -38,6 +39,10 @@ if(mysqli_num_rows($user)===1) //cek apakah data ada atau tidak fungsi ini akan 
     
     $_SESSION['login']=true; //deklarasi login session
     $_SESSION['user'] =  $row['user_id'];
+
+
+
+    if(mysqli_num_rows($admin)===1){ header("Location: ../../admin/index.php");}
     
 
     header("Location: ../index.php?");
