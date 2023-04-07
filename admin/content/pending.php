@@ -63,7 +63,18 @@
                           <div>
                           </div>
                           <div class="my-auto d-flex justify-content-center">
-                            <img class="rounded-3" src="../directory/users/<?= $row['register_req']; ?>" alt="persyaratan" width="160px"data-bs-toggle="modal" data-bs-target="#acc">
+                            <img class="rounded-3" src="../directory/users/<?= $row['register_req']; ?>" alt="persyaratan" width="160px"data-bs-toggle="modal" data-bs-target="#img">
+
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex px-2">
+                          <div>
+                          </div>
+                          <div class="my-auto d-flex justify-content-center">
+                            <!-- <button class="rounded-3" src="../directory/users/<?= $row['register_req']; ?>" alt="persyaratan" > -->
+                            <button width="160px"data-bs-toggle="modal" data-bs-target="#acc" class="btn btn-success">ACC</button>
 
                           </div>
                         </div>
@@ -81,14 +92,36 @@
                         </div>
                       </div>
 
-                      <div class="modal fade" id="acc">
-                        <div class="modal-dialog ">
-                              <form action="">
-                                <button class="btn btn-success" >acc</button>
-                              </form>
-                        </div>
-                      </div>
+<!-- The Modal -->
+<div class="modal fade" id="acc">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
 
+
+
+      <!-- Modal Header -->
+      <form action="action/acc_register.php" method="post">
+      <div class="modal-header">
+        <h4 class="modal-title">Acc Pendaftaran</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p>Apakah anda yakin ingin menerima pendaftar?</p>
+        <input type="hidden" value="<?= $row['register_id']; ?>" name="register_id">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success" name="submit" >Terima</button>
+      </div>
+      </form>
+
+    </div>
+  </div>
+</div>
 
                       
 
