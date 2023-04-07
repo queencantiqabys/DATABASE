@@ -4,7 +4,7 @@
   $_SESSION=[];
   session_unset();
   session_destroy();
-header("Location: ../login/login.html");
+header("Location: ../../dashboard/login/login.html");
 
 
 ?>

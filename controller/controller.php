@@ -3,7 +3,7 @@
 $host="localhost";
 $username="root";
 $pw="";
-$db="finaldb";
+$db="projectdb";
 $conn=mysqli_connect($host,$username,$pw,$db);
 // ------------------------------------------------------ //
 function error(){
