@@ -1,4 +1,7 @@
 <?php
+include "../../controller/controller.php";
+?>
+<?php
     var_dump($_POST);
     $registerId=$_POST['register_id'];
 
