@@ -90,7 +90,7 @@ include "../controller/controller.php";
     $btn5_get="content/logout.php";
 
     $btn6="";
-    $btn6_name="Daftar";
+    $btn6_name="Pending";
     $btn6_get="?6";
 
       // MEMPROSES AGAR MENGAKTIVKAN BUTTON ONCLICK
@@ -125,11 +125,11 @@ include "../controller/controller.php";
     $btn_get=$btn5_get;
     $content="content/logout.php";
   }
-  if(isset($_GET['event'])){
+  if(isset($_GET['6'])){
     $btn6=$active;
     $btn_name=$btn6_name;
     $btn_get=$btn6_get;
-    $content="content/daftar.php";
+    $content="content/pending.php";
   }
   ?>
 
@@ -169,6 +169,16 @@ include "../controller/controller.php";
 
 
         <li class="nav-item">
+          <a class="nav-link text-white <?= $btn6; ?>" href="<?= $btn6_get; ?>">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">assignment</i>
+            </div>
+            <span class="nav-link-text ms-1"><?= $btn6_name; ?></span>
+          </a>
+        </li>
+
+
+        <li class="nav-item">
           <a class="nav-link text-white  <?= $btn3; ?>" href="<?= $btn3_get; ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
@@ -203,14 +213,7 @@ include "../controller/controller.php";
         </li>
 
 
-        <!-- <li class="nav-item">
-          <a class="nav-link text-white <?= $btn6; ?>" href="<?= $btn6_get; ?>">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
-            </div>
-            <span class="nav-link-text ms-1"><?= $btn6_name; ?></span>
-          </a>
-        </li> -->
+
       </ul>
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">

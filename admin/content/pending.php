@@ -1,5 +1,5 @@
 <?php
-    $result=select("select * from result where user_id=$userId");
+    $result=select("select * from register "  );
     
 ?>
 
@@ -18,9 +18,9 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Event Name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Grade</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Score</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Sekolah</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Register Date</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Requirement</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
                       
                     </tr>
                   </thead>
@@ -35,6 +35,11 @@
                         $event=mysqli_fetch_assoc($events);
                         
                         
+                        $userId=$row['user_id'];
+                        $users=mysqli_query($conn,"select user_name from users where user_id =$userId ");
+                        $user=mysqli_fetch_assoc($users);
+                        
+                        
                   ?>
                     <tr>
                       <td>
@@ -42,7 +47,7 @@
                           <div>
                           </div>
                           <div class="my-auto">
-                            <h6 class="mb-0 text-sm upper"><?= $data['user_name']; ?></h6>
+                            <h6 class="mb-0 text-sm upper"><?= $user['user_name']; ?></h6>
                           </div>
                         </div>
                       </td>
@@ -50,29 +55,44 @@
                         <p class="text-sm font-weight-bold mb-0 upper"><?= $event['event_name']; ?></p>
                       </td>
                       <td>
-                        <span class="text-xs font-weight-bold upper"><?= $row['grade']; ?></span>
+                        <span class="text-xs font-weight-bold upper"><?= $row['register_date']; ?></span>
                       </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold"><?= $row['score']?>%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: <?= $row['score']?>%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
+
                       <td>
                         <div class="d-flex px-2">
                           <div>
                           </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm upper"><?= $data['user_school']; ?></h6>
+                          <div class="my-auto d-flex justify-content-center">
+                            <img class="rounded-3" src="../directory/users/<?= $row['register_req']; ?>" alt="persyaratan" width="160px"data-bs-toggle="modal" data-bs-target="#acc">
+
                           </div>
                         </div>
                       </td>
       
                     </tr>
+
+  <!-- =============================================( MODAL )=================================================================== -->
+                      </div>
+
+                      <!-- The Modal -->
+                      <div class="modal fade" id="img">
+                        <div class="modal-dialog ">
+                              <img class="rounded-1"   src="../directory/users/<?= $row['register_req']; ?>" alt="" width="600px">
+                        </div>
+                      </div>
+
+                      <div class="modal fade" id="acc">
+                        <div class="modal-dialog ">
+                              <form action="">
+                                <button class="btn btn-success" >acc</button>
+                              </form>
+                        </div>
+                      </div>
+
+
+                      
+
+
                     <?php
                         endforeach;
                     ?>

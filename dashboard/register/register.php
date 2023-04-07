@@ -6,7 +6,7 @@ include "../../controller/controller.php";
 $userId=$_POST['user_id'];
 $eventId=$_POST['event_id'];
 // var_dump($_FILES); die;
-$req=upload('../../directory/users');
+$req=upload('../../directory/users/');
 
 $attemp=mysqli_query($conn,"SELECT * FROM register where user_id =$userId AND event_id=$eventId ");
 if(mysqli_num_rows($attemp)>0)// cek apakah telah ada di table result atau belum atau cek dia sudah pernah mengikuti ujian atau belum

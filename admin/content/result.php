@@ -1,5 +1,5 @@
 <?php
-    $result=select("select * from result where user_id=$userId");
+    $result=select("select * from result order by score desc");
     
 ?>
 
@@ -35,6 +35,11 @@
                         $event=mysqli_fetch_assoc($events);
                         
                         
+                        $userId=$row['user_id'];
+                        $users=mysqli_query($conn,"select user_name from users where user_id =$userId ");
+                        $user=mysqli_fetch_assoc($users);
+                        
+                        
                   ?>
                     <tr>
                       <td>
@@ -42,7 +47,7 @@
                           <div>
                           </div>
                           <div class="my-auto">
-                            <h6 class="mb-0 text-sm upper"><?= $data['user_name']; ?></h6>
+                            <h6 class="mb-0 text-sm upper"><?= $user['user_name']; ?></h6>
                           </div>
                         </div>
                       </td>
@@ -50,7 +55,7 @@
                         <p class="text-sm font-weight-bold mb-0 upper"><?= $event['event_name']; ?></p>
                       </td>
                       <td>
-                        <span class="text-xs font-weight-bold"><?= $row['grade']; ?></span>
+                        <span class="text-xs font-weight-bold upper"><?= $row['grade']; ?></span>
                       </td>
                       <td class="align-middle text-center">
                         <div class="d-flex align-items-center justify-content-center">
